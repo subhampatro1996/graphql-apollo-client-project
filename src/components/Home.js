@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client";
 import axios from "axios";
 import { GET_ALL_QUOTES, GET_CAMPAIGN_LIST } from "../gqloperations/queries";
 import Details from "./Details";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Route,Routes, useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [bool, setBool] = useState(false);
@@ -29,13 +29,14 @@ const Home = () => {
                 
               }}
             >
-              {campaignList.campaignName}
+
+              {localStorage.getItem('token') ?  <Link>{campaignList.campaignName}</Link>  : navigate('/login')}
             </li>
           );
         })}
       </ul>
 
-      {<Details campignId={campignId}/>}
+      {bool && <Details campignId={campignId}/>}
 
 
     </div>
