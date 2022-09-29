@@ -29,14 +29,14 @@ const Home = () => {
                 
               }}
             >
-
+                
               {localStorage.getItem('token') ?  <Link>{campaignList.campaignName}</Link>  : navigate('/login')}
             </li>
           );
         })}
       </ul>
-
-      {bool && <Details campignId={campignId}/>}
+        <h3 style={{color:"orange"}}>Details of campaign</h3>
+        {bool && <Details campignId={campignId}/>}
 
 
     </div>
